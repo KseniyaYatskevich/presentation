@@ -1,12 +1,159 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>The Event Loop</title>
+
+		<link rel="stylesheet" href="css/reset.css">
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/monokai.css">
+		<script src="/path/to/highlight.pack.js"></script>
+		<script>hljs.initHighlightingOnLoad();</script>
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+				<section>
+					<h1> Event Loop</h1>
+					<img class="presentation__img" src="assets/image/sircle.png" alt="sircle" width="500px">
+				</section>
+				<section>
+					<h4>Java Script is a single threaded language</h4>
+					<p>one thread == one callstack == one thing at a time</p>
+					<img  class="presentation__img" src="assets/image/singleThread.png" alt="Single thread">
+				</section>
+				<section>
+					<img class="presentation__img stretch" src="assets/image/basicStructure.jpeg" alt="Basic structure">
+				</section>
+				<section>	
+					<section>				
+						<div class="presentation__flex">
+							<div>
+								<h4>Code</h4>
+								<img class="presentation__img" src="assets/image/example.png" alt="Work Queue" style="width: 400px; height: auto;">
+							</div>
+							<div>
+								<h4>Console</h4>
+								<ol>
+									<li>A</li>
+									<li>C</li>
+									<li>B</li>
+								</ol>
+							</div>
+						</div>
+					</section>
+					<section>
+						<div class="example__flex">
+							<img class="example__img presentation__img" src="assets/image/example.png" alt="Work Queue">
+							<img class="presentation__img example__img" src="assets/image/workExampleCodePart1.png" alt="Work example code">
+						</div>
+					</section>
+					<section>
+						<div class="example__flex">
+							<img class="example__img presentation__img" src="assets/image/example.png" alt="Work Queue">
+							<img class="presentation__img example__img" src="assets/image/workExampleCodePart2.png" alt="Work example code">
+						</div>
+					</section>
+					<section>
+						<div class="example__flex">
+							<img class="example__img presentation__img" src="assets/image/example.png" alt="Work Queue">
+							<img class="presentation__img example__img" src="assets/image/workExampleCodePart3.png" alt="Work example code">
+						</div>
+					</section>
+					<section>
+						<div class="example__flex">
+							<img class="example__img presentation__img" src="assets/image/example.png" alt="Work Queue">
+							<img class="presentation__img example__img" src="assets/image/workExampleCodePart4.png" alt="Work example code">
+						</div>
+					</section>
+					<section>
+						<div class="example__flex">
+							<img class="example__img presentation__img" src="assets/image/example.png" alt="Work Queue">
+							<img class="presentation__img example__img" src="assets/image/workExampleCodePart5.png" alt="Work example code">
+						</div>
+					</section>
+				</section>
+				<section>	
+					<section>
+						<h4>Macrotask</h4>
+						<ul>
+							<li>setTimeout</li>
+							<li>setInterval</li>
+							<li>AJAX</li>
+							<li>Events</li>
+						</ul>
+					</section>
+					<section>
+						<img class="presentation__img stretch" src="assets/image/macrotaskQueue.png" alt="Macrotask Queue" width="500px">
+					</section>
+				</section>
+				<section>
+					<section>
+						<h4>Microtask</h4>
+						<ul>
+							<li>Promise</li>
+							<li>Mutation Observer</li>
+						</ul>
+					</section>
+					<section>
+						<img class="presentation__img stretch" src="assets/image/microtaskQueue.png" alt="Microtask Queue" width="500px">
+					</section>
+				</section>
+				<section>
+					<img class="presentation__img stretch" src="assets/image/workOueue.png" alt="Work Queue" >
+				</section>
+				<section>					
+					<div class="presentation__flex">
+						<div>
+							<h4>Code</h4>
+							<img class="presentation__img stretch" src="assets/image/code.png" alt="Work Queue" width="500px">
+						</div>
+						<div id="fragments" class="present">
+							<h4>Console</h4>
+							<ol>
+								<li class="fragment visible current-fragment" data-fragment-index="0">code</li>
+								<li class="fragment" data-fragment-index="1">promise</li>
+								<li class="fragment" data-fragment-index="2">timeout</li>
+							</ol>
+						</div>
+					</div>
+				</section>
+				<section>
+					<p>For understand how the Event Loop  works, I recommend using <a href="http://latentflip.com/loupe" target=_blank> http://latentflip.com/loupe</a>.</p>
+					<img class="presentation__img example__img" src="assets/image/loupe.png" alt="Loupe">
+				</section>
+			</div>
+		</div>
+
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info about config & dependencies:
+			// - https://github.com/hakimel/reveal.js#configuration
+			// - https://github.com/hakimel/reveal.js#dependencies
+			Reveal.initialize({
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true }
+				]
+			});
+		</script>
+	</body>
 </html>
+
